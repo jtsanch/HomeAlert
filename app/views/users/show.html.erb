@@ -1,0 +1,8 @@
+<% if current_user? %>
+	Welcome back <%= current_user.login %>!
+<% else %>
+	<%= button_to "Create a new user", user_path, :method => "new" %>
+	<% if flash[:errors] %>
+	  	<p> <%= flash[:errors].join("<br>") %> </p>
+	<% end %>s
+<% end %>

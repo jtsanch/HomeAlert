@@ -1,0 +1,22 @@
+<h2> Create a new user </h2>
+
+<% if flash[:errors] %>
+  	<p> <%= flash[:errors].join("<br>") %> </p>
+<% end %>
+
+
+<%= form_for @user, url:{ action: "create"} do |user_form| %>
+	<% if @user.errors.any? %>
+		<%= @user.errors.full_messages.join("<br>") %>
+	<% end %>
+	<p>
+	<%= label_tag(:login, "Login: ") %>
+	<%= user_form.text_field :login %>
+	</p><p>
+	<%= label_tag(:password, "Password: ") %>
+	<%= user_form.password_field  :password %>
+	<%= label_tag(:password_confirmation, "Confirm Password: ")%>
+	<%= user_form.password_field  :password_confirmation %>
+	</p>
+	<%= user_form.submit "Create" %>
+<% end %>
